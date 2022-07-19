@@ -1,5 +1,5 @@
 # JS30Challenges
-JS30 Challenges 
+
 
 
 This contains all of the challenges that I've completed for "JavaScript30." 
