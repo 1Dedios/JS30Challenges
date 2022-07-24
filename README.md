@@ -10,4 +10,5 @@ If you happen to open the folder in this repo, it just contains the same files t
 <h2> Deployed Site Link </h2>
 
 Github Pages - https://1dedios.github.io/JS30Challenges-Day1/
+<br>
 Vercel - https://js30challenge-day1-iqnars33g-1dedios.vercel.app/
