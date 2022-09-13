@@ -49,6 +49,9 @@
 		</div>
 	</div>
 
+	<!--Below: always a good idea to put different file types b/c the browser
+			might not accept the format you chose.-->
+
 	<audio data-key="65" src="sounds/clap.wav"></audio>
 	<audio data-key="83" src="sounds/hihat.wav"></audio>
 	<audio data-key="68" src="sounds/kick.wav"></audio>
@@ -71,17 +74,17 @@
 			if (!audio) return; //stop the function from running all together
 			audio.currentTime = 0; // rewind to the start
 			audio.play();
-			key.classList.add('playing'); //similar to jquery's - key.addClass('playing')
+			key.classList.add(`playing`); //similar to jquery's - key.addClass('playing')
 		};
 
 		function removeTransition(e) {
-			if (e.propertyName !== 'transform') return; //stop the function from running all together
-			this.classList.remove('playing'); //this equals to whatever got called against it. addEventListener got called below. what did it get called against the key property
+			if (e.propertyName !== `transform`) return; //stop the function from running all together
+			this.classList.remove(`playing`); //this equals to whatever got called against it. addEventListener got called below. what did it get called against the key property
 		}
 
-		const keys = document.querySelectorAll('.key');
-		keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-		window.addEventListener('keydown', playSound);
+		const keys = document.querySelectorAll(`.key`);
+		keys.forEach(key => key.addEventListener(`transitionend`, removeTransition(e)));
+		window.addEventListener(`keydown`, playSound(e));
 	</script>
 
 </body>
