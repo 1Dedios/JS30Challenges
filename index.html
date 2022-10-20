@@ -11,7 +11,7 @@
 
 
 	<div class="keys">
-		<div data-key="65" class="key">
+		<div data-key="65" class="key" onkeydown="playSound()">
 			<kbd>A</kbd>
 			<span class="sound">clap</span>
 		</div>
@@ -52,39 +52,52 @@
 	<!--Below: always a good idea to put different file types b/c the browser
 			might not accept the format you chose.-->
 
-	<audio data-key="65" src="./sounds/clap.wav"></audio>
-	<audio data-key="83" src="./sounds/hihat.wav"></audio>
-	<audio data-key="68" src="./sounds/kick.wav"></audio>
-	<audio data-key="70" src="./sounds/openhat.wav"></audio>
-	<audio data-key="71" src="./sounds/boom.wav"></audio>
-	<audio data-key="72" src="./sounds/ride.wav"></audio>
-	<audio data-key="74" src="./sounds/snare.wav"></audio>
-	<audio data-key="75" src="./sounds/tom.wav"></audio>
-	<audio data-key="76" src="./sounds/tink.wav"></audio>
+	<audio data-key="65" src="sounds/clap.wav"></audio>
+	<audio data-key="83" src="sounds/hihat.wav"></audio>
+	<audio data-key="68" src="sounds/kick.wav"></audio>
+	<audio data-key="70" src="sounds/openhat.wav"></audio>
+	<audio data-key="71" src="sounds/boom.wav"></audio>
+	<audio data-key="72" src="sounds/ride.wav"></audio>
+	<audio data-key="74" src="sounds/snare.wav"></audio>
+	<audio data-key="75" src="sounds/tom.wav"></audio>
+	<audio data-key="76" src="sounds/tink.wav"></audio>
 
 
 	<script>
-		//window event listener because I want to hear it on the screen
-		//you could just as easily put input or textarea
-		//e is representing what happened on the screen
-		//keycode is the number represented when you press a key
-		function playSound(e) {
-			const audio = document.querySelector(`audio[data-key="${e.keycode}"]`);
-			const key = document.querySelector(`.key[data-key="${e.keycode}"]`);
-			if (!audio) return; //stop the function from running all together
-			audio.currentTime = 0; // rewind to the start
-			audio.play();
-			key.classList.add(`playing`); //similar to jquery's - key.addClass('playing')
-		};
 
-		function removeTransition(e) {
-			if (e.propertyName !== `transform`) return; //stop the function from running all together
-			this.classList.remove(`playing`); //this equals to whatever got called against it. addEventListener got called below. what did it get called against the key property
-		}
+		// function playSound(e) {
+		// 	let keycode = `${data - key.value}`;
 
-		const keys = document.querySelectorAll(`.key`);
-		keys.forEach(key => key.addEventListener(`transitionend`, removeTransition(e)));
-		window.addEventListener(`keydown`, playSound(e));
+		// 	const key = document.querySelector(`.key[data-key="${e.keycode}"]`);
+		// 	if (!audio) return; 
+		// 	audio.currentTime = 0;
+		// 	audio.play();
+		// 	key.classList.add('playing'); 
+		// };
+
+		// function removeTransition(e) {
+		// 	if (e.propertyName !== 'transform') return; 
+		// 	this.classList.remove('playing'); 
+
+		// const keys = document.querySelectorAll('.key');
+		// keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+		window.addEventListener('keydown', function (e) {
+			const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+			const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+			if (!audio) return;
+			audio.currentTime = 0;
+			audio.play()
+			key.classList.add('playing')
+
+		});
+
+
+
+
+
+
+
 	</script>
 
 
